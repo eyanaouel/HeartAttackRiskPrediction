@@ -103,8 +103,7 @@ The `heart.csv` dataset contains **918 observations** with the following variabl
 
 ## Screenshots
 
-<details>
-<summary>Click to view visualizations</summary>
+
 
 <p align="center">
   <img src="https://github.com/eyanaouel/HeartAttackRiskPrediction/blob/12826e3329367aa72aaca755ccf8118e3d6a765c/Screenshot%202025-09-28%20135325.png" alt="ROC Curves of All Models" width="600">
@@ -148,7 +147,6 @@ The `heart.csv` dataset contains **918 observations** with the following variabl
   <em>PCA – Variable Contributions to Principal Component</em>
 </p>
 
-</details>
 
 ## Key Insights
 

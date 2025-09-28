@@ -118,27 +118,27 @@ Le dataset `heart.csv` contient **918 observations** avec les variables suivante
 </p>
 
 <p align="center">
-  <img src="results/plots/correlation_matrix.png" alt="Correlation Matrix" width="600">
+  <img src="https://github.com/eyanaouel/HeartAttackRiskPrediction/blob/4a170f0ce408f0c409f859897715a9750f2a95c1/Screenshot%202025-09-28%20141003.png" alt="Comparison Table of Performance Metrics" width="600">
   <br>
-  <em>Matrice de corrélation des variables numériques</em>
+  <em>Comparison Table of Performance Metrics</em>
 </p>
 
 <p align="center">
-  <img src="results/plots/pca_biplot.png" alt="PCA Biplot" width="600">
+  <img src="https://github.com/eyanaouel/HeartAttackRiskPrediction/blob/4a170f0ce408f0c409f859897715a9750f2a95c1/Screenshot%202025-09-28%20141239.png" alt="Waterfall of a Patient Belonging to the Target Class" width="600">
   <br>
-  <em>Biplot PCA avec coloration selon la présence de maladie cardiaque</em>
+  <em>Waterfall of a Patient Belonging to the Target Class</em>
 </p>
 
 <p align="center">
-  <img src="results/plots/model_comparison.png" alt="Model Comparison" width="800">
+  <img src="https://github.com/eyanaouel/HeartAttackRiskPrediction/blob/4a170f0ce408f0c409f859897715a9750f2a95c1/Screenshot%202025-09-28%20141301.png" alt="Waterfall of a Patient Not Belonging to the Target Class" width="800">
   <br>
-  <em>Comparaison avant/après optimisation des hyperparamètres</em>
+  <em>Waterfall of a Patient Not Belonging to the Target Classs</em>
 </p>
 
 <p align="center">
-  <img src="results/plots/roc_curves.png" alt="ROC Curves" width="600">
+  <img src="https://github.com/eyanaouel/HeartAttackRiskPrediction/blob/4a170f0ce408f0c409f859897715a9750f2a95c1/Screenshot%202025-09-28%20141050.png" alt="Variable Importances via Odds Ratios (Logistic Regression)" width="600">
   <br>
-  <em>Courbes ROC de tous les modèles</em>
+  <em>Variable Importances via Odds Ratios (Logistic Regression)</em>
 </p>
 
 <p align="center">

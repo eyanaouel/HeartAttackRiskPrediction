@@ -1,15 +1,12 @@
-# 🫀 Prédiction du Risque de Maladie Cardiaque
+#  Prédiction du Risque de Maladie Cardiaque
 
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![R](https://img.shields.io/badge/R-4.0+-blue.svg)](https://www.r-project.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-black.svg)](https://github.com)
 
-## 📋 Description du Projet
+
+##  Description du Projet
 
 Ce projet présente une analyse complète pour la prédiction du risque de maladie cardiaque en utilisant des techniques d'apprentissage automatique. L'étude combine une analyse exploratoire approfondie avec l'implémentation et la comparaison de plusieurs algorithmes de classification.
 
-## 🎯 Objectifs
+##  Objectifs
 
 - **Analyse exploratoire** : Comprendre les facteurs de risque cardiovasculaire
 - **Préparation des données** : Nettoyer et préprocesser le dataset
@@ -17,7 +14,7 @@ Ce projet présente une analyse complète pour la prédiction du risque de malad
 - **Évaluation comparative** : Comparer les performances des différents algorithmes
 - **Interprétabilité** : Analyser l'importance des variables avec SHAP
 
-## 📊 Dataset
+##  Dataset
 
 Le dataset `heart.csv` contient **918 observations** avec les variables suivantes :
 
@@ -38,7 +35,7 @@ Le dataset `heart.csv` contient **918 observations** avec les variables suivante
 ### Variable Cible
 - **HeartDisease** : Présence de maladie cardiaque (0 = Non, 1 = Oui)
 
-## 🛠️ Technologies Utilisées
+##  Technologies Utilisées
 
 ### R
 - **tidyverse** : Manipulation et visualisation des données
@@ -53,28 +50,9 @@ Le dataset `heart.csv` contient **918 observations** avec les variables suivante
 - **shap** : Interprétabilité des modèles
 - **matplotlib, seaborn** : Visualisations
 
-## 📁 Structure du Projet
 
-```
-heart-disease-prediction/
-├── data/
-│   ├── heart.csv                 # Dataset original
-│   └── heart_cleaned.csv         # Dataset nettoyé
-├── notebooks/
-│   ├── analyse_exploratoire.R    # Analyse exploratoire en R
-│   └── modelisation.ipynb        # Modélisation en Python
-├── src/
-│   ├── data_preprocessing.py     # Préparation des données
-│   ├── model_training.py         # Entraînement des modèles
-│   └── model_evaluation.py       # Évaluation et comparaison
-├── results/
-│   ├── plots/                    # Graphiques et visualisations
-│   └── models/                   # Modèles sauvegardés
-├── README.md
-└── requirements.txt
-```
 
-## 🔄 Méthodologie
+##  Méthodologie
 
 ### 1. **Analyse Exploratoire (R)**
 - Visualisation des distributions
@@ -107,7 +85,7 @@ heart-disease-prediction/
 - **GridSearchCV** pour l'optimisation des hyperparamètres
 - **Métriques d'évaluation** : Accuracy, Recall, F1-Score, AUC
 
-## 📈 Résultats
+##  Résultats
 
 ### Performances des Modèles (Après Optimisation)
 
@@ -127,10 +105,10 @@ heart-disease-prediction/
 4. **ExerciseAngina** - Angine induite par l'exercice
 5. **Age** - Âge du patient
 
-## 📊 Captures d'Écran
+##  Captures d'Écran
 
 <details>
-<summary>🔍 Cliquez pour voir les visualisations</summary>
+<summary> Cliquez pour voir les visualisations</summary>
 
 ### 1. Distribution des Variables
 <p align="center">
@@ -183,56 +161,6 @@ heart-disease-prediction/
 
 </details>
 
-## 🚀 Installation et Utilisation
-
-### Prérequis
-
-#### Python 3.8+
-```bash
-pip install -r requirements.txt
-```
-
-#### R 4.0+
-```r
-# Installer les packages R nécessaires
-install.packages(c("tidyverse", "skimr", "corrplot", "factoextra", "MASS"))
-```
-
-### Cloner le Repository
-```bash
-git clone https://github.com/username/heart-disease-prediction.git
-cd heart-disease-prediction
-```
-
-### Exécution
-
-#### 1. Analyse exploratoire (R)
-```bash
-Rscript notebooks/analyse_exploratoire.R
-```
-
-#### 2. Modélisation (Python)
-```bash
-jupyter notebook notebooks/modelisation.ipynb
-# ou
-python src/model_training.py
-```
-
-## 📋 Requirements
-
-Créez un fichier `requirements.txt` avec :
-
-```txt
-pandas==1.5.3
-numpy==1.24.3
-scikit-learn==1.3.0
-xgboost==1.7.6
-shap==0.42.1
-matplotlib==3.7.1
-seaborn==0.12.2
-jupyter==1.0.0
-plotly==5.14.1
-```
 
 ## 🔍 Insights Clés
 
@@ -258,22 +186,4 @@ Les contributions sont les bienvenues ! Merci de :
 4. Pousser vers la branche (`git push origin feature/AmazingFeature`)
 5. Ouvrir une Pull Request
 
-## 📄 Licence
 
-Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
-
-## 📧 Contact
-
-**Nom** - [votre.email@example.com](mailto:votre.email@example.com)
-
-**Lien du projet** : [https://github.com/username/heart-disease-prediction](https://github.com/username/heart-disease-prediction)
-
-## 🙏 Remerciements
-
-- Dataset fourni par [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/heart+disease)
-- Communauté scikit-learn pour les excellents outils de ML
-- Équipe SHAP pour les outils d'interprétabilité
-
----
-
-⭐ N'hésitez pas à mettre une étoile si ce projet vous a été utile !

@@ -142,15 +142,15 @@ Le dataset `heart.csv` contient **918 observations** avec les variables suivante
 </p>
 
 <p align="center">
-  <img src="results/plots/shap_summary.png" alt="SHAP Summary" width="700">
+  <img src="https://github.com/eyanaouel/HeartAttackRiskPrediction/blob/7a4a7fa522bfebad942fca77b9084cde257de26d/Screenshot%202025-09-28%20141143.png" alt="Comparative Charts of Performance Before and After GridSearchCV" width="700">
   <br>
-  <em>Analyse SHAP de l'importance des variables</em>
+  <em>Comparative Charts of Performance Before and After GridSearchCV</em>
 </p>
 
 <p align="center">
-  <img src="results/plots/confusion_matrix_rf.png" alt="Confusion Matrix" width="500">
+  <img src="https://github.com/eyanaouel/HeartAttackRiskPrediction/blob/7c858ba06abdd7a1abdbb7bd16910196c9b9995e/Screenshot%202025-09-28%20142526.png" alt="PCA – Variable Contributions to Principal Component" width="500">
   <br>
-  <em>Matrice de confusion du meilleur modèle (Random Forest)</em>
+  <em>PCA – Variable Contributions to Principal Component</em>
 </p>
 
 </details>

@@ -1,0 +1,224 @@
+# ==== IMPORTATION DES LIBRAIRIES ====
+library(tidyverse)
+library(skimr)
+library(corrplot)
+# library(ggplot2) déjà inclus dans tidyverse
+
+# ==== CHARGEMENT ET NETTOYAGE DU JEU DE DONNÉES ====
+
+# Importation du dataset
+df <- read.csv("D:/SDIA-B/Sem 2/Méthodes statistiques/Heart Attack Risk Prediction-Project/heart (1).csv")
+
+# Aperçu rapide
+head(df)
+str(df)
+skim(df)
+summary(df)
+
+
+#--------------------------------------------------
+# ==== ANALYSE EXPLORATOIRE ====
+
+
+# ==== VISUALISATION DES VARIABLES QUANTITATIVES ====
+
+# Histogramme de l'âge
+ggplot(df, aes(x = Age)) +
+  geom_histogram(binwidth = 5, fill = "steelblue", color = "white") +
+  labs(title = "Distribution de l'âge")
+
+ggplot(df, aes(x = Cholesterol)) +
+  geom_histogram(binwidth = 10, fill = "darkgreen", color = "white") +
+  labs(title = "Distribution du cholestérol")
+
+# Boxplot pour détecter les valeurs extrêmes
+ggplot(df, aes(y = Cholesterol)) +
+  geom_boxplot(fill = "orange") +
+  labs(title = "Boxplot du cholestérol")
+# Visualisation de la variable cible
+ggplot(df, aes(x = factor(HeartDisease))) +
+  geom_bar(fill = c("skyblue", "salmon")) +
+  labs(x = "Heart Disease (0 = No, 1 = Yes)", y = "Effectif", title = "Distribution de la maladie cardiaque")
+
+# Matrice de corrélation des variables numériques
+numeric_vars <- df %>% select(where(is.numeric))
+cor_matrix <- cor(numeric_vars)
+corrplot(cor_matrix, method = "color", type = "upper", tl.cex = 0.8)
+  
+# ==== MOYENNES SELON LA PRÉSENCE DE MALADIE ====
+
+df %>%
+  group_by(HeartDisease) %>%
+  summarise(
+    mean_age = mean(Age),
+    mean_chol = mean(Cholesterol),
+    mean_maxhr = mean(MaxHR)
+  )
+#-----------------------------------------------------
+
+# Vérification des valeurs aberrantes
+sum(df$RestingBP == 0)         # BP = 0 (non plausible)
+sum(df$Cholesterol == 0)       # Cholestérol = 0 (non plausible)
+sum(df$Oldpeak < 0)            # Oldpeak négatif (anormal)
+
+summary(df)
+
+# Correction des valeurs aberrantes
+df$RestingBP[df$RestingBP == 0] <- median(df$RestingBP[df$RestingBP != 0])
+df$Cholesterol_imputed <- ifelse(df$Cholesterol == 0, 1, 0)
+df$Cholesterol[df$Cholesterol == 0] <- median(df$Cholesterol[df$Cholesterol != 0])
+df$Oldpeak[df$Oldpeak < 0] <- median(df$Oldpeak[df$Oldpeak >= 0])
+
+# Vérification post-nettoyage
+colSums(is.na(df))
+
+# ==== ANALYSE EXPLORATOIRE ====
+anyDuplicated(df) 
+# Visualisation de la variable cible
+ggplot(df, aes(x = factor(HeartDisease))) +
+  geom_bar(fill = c("skyblue", "salmon")) +
+  labs(x = "Heart Disease (0 = No, 1 = Yes)", y = "Effectif", title = "Distribution de la maladie cardiaque")
+
+# ==== VISUALISATION DES VARIABLES QUANTITATIVES ====
+
+# Histogramme de l'âge
+ggplot(df, aes(x = Age)) +
+  geom_histogram(binwidth = 5, fill = "steelblue", color = "white") +
+  labs(title = "Distribution de l'âge")
+
+ggplot(df, aes(x = Cholesterol)) +
+  geom_histogram(binwidth = 10, fill = "darkgreen", color = "white") +
+  labs(title = "Distribution du cholestérol")
+
+# Boxplot pour détecter les valeurs extrêmes
+ggplot(df, aes(y = Cholesterol)) +
+  geom_boxplot(fill = "orange") +
+  labs(title = "Boxplot du cholestérol")
+
+# ==== ANALYSE DES VARIABLES CATÉGORIELLES ====
+
+# Sexe vs maladie cardiaque
+ggplot(df, aes(x = Sex, fill = factor(HeartDisease))) +
+  geom_bar(position = "dodge") +
+  labs(x = "Sexe", fill = "Heart Disease")
+
+# Douleur thoracique vs maladie cardiaque
+ggplot(df, aes(x = ChestPainType, fill = factor(HeartDisease))) +
+  geom_bar(position = "dodge") +
+  labs(x = "Type de douleur", title = "Maladie cardiaque selon le type de douleur")
+
+# Résumé : Le type de douleur thoracique semble lié à la maladie cardiaque.
+
+# ==== ANALYSE DES CORRÉLATIONS ====
+
+
+# Matrice de corrélation des variables numériques
+numeric_vars <- df %>% select(where(is.numeric))
+cor_matrix <- cor(numeric_vars)
+corrplot(cor_matrix, method = "color", type = "upper", tl.cex = 0.8)
+
+# Résumé : Corrélations faibles à modérées. Pas de redondance apparente.
+
+# Corrélations entre Age et Cholestérol
+cor(df$Age, df$Cholesterol, method = "pearson")
+cor(df$Age, df$Cholesterol, method = "spearman")
+
+# Résumé : Peu de corrélations fortes entre les variables. L’analyse multivariée est justifiée.
+
+# ==== MOYENNES SELON LA PRÉSENCE DE MALADIE ====
+
+df %>%
+  group_by(HeartDisease) %>%
+  summarise(
+    mean_age = mean(Age),
+    mean_chol = mean(Cholesterol),
+    mean_maxhr = mean(MaxHR)
+  )
+
+# Résumé : Les personnes atteintes ont tendance à être plus âgées, avec un maxHR plus bas.
+
+# ==== TESTS STATISTIQUES ====
+
+# Test de normalité
+shapiro.test(df$Age)  # p-value <<< 0.05 → non normal
+
+# Test du chi² : Sexe vs HeartDisease
+chisq.test(table(df$Sex, df$HeartDisease))
+
+# Test du chi² : Douleur thoracique vs HeartDisease
+chisq.test(table(df$ChestPainType, df$HeartDisease))
+
+# Résumé : Le sexe et le type de douleur thoracique sont significativement liés à la maladie.
+
+# ANOVA : âge moyen selon maladie
+anova_result <- aov(Age ~ factor(HeartDisease), data = df)
+summary(anova_result)
+
+# Résumé : L’âge moyen diffère significativement selon la présence de maladie.
+
+# ==== PCA (ANALYSE EN COMPOSANTES PRINCIPALES) ====
+
+# Standardisation
+df_scaled <- scale(df[, sapply(df, is.numeric)])
+
+# PCA
+pca <- prcomp(df_scaled, center = TRUE, scale. = TRUE)
+summary(pca)
+
+# Graphique de la variance expliquée
+install.packages("factoextra")
+library(factoextra)
+
+fviz_eig(pca, addlabels = TRUE, ylim = c(0, 50))    # Il permet de choisir combien de composantes principales retenir
+
+# Biplot des 2 premières composantes
+fviz_pca_biplot(pca, label = "var", habillage = df$HeartDisease, palette = "jco")
+
+# Contribution des variables
+fviz_pca_var(pca, col.var = "contrib") +
+  scale_color_gradient2(low = "white", mid = "blue", high = "red") +
+  theme_minimal()      # Permet d’identifier les variables les plus influentes dans la formation des axes principaux.
+
+# Résumé PCA : Certaines variables contribuent fortement à la variance (ex : MaxHR, Oldpeak).
+
+# ==== LDA (ANALYSE DISCRIMINANTE LINÉAIRE) ====
+
+library(MASS)
+
+# Préparation
+df$HeartDisease <- as.factor(df$HeartDisease)
+summary(df[, c("Age", "RestingBP", "Cholesterol", "MaxHR", "Oldpeak")])
+
+# Ajout d'un split train/test simple et une évaluation :
+
+set.seed(123)
+index <- sample(1:nrow(df), 0.7*nrow(df))
+train <- df[index, ]
+test <- df[-index, ]
+
+
+# Modèle LDA
+lda_model <- lda(HeartDisease ~ Age + RestingBP + Cholesterol + MaxHR + Oldpeak, data = train)
+lda_model
+plot(lda_model)
+
+# Résumé LDA : Le modèle différencie relativement bien les groupes malades vs non malades.
+
+lda_pred <- predict(lda_model, test)$class
+
+# Matrice de confusion
+table(Predicted = lda_pred, Actual = test$HeartDisease)
+
+# Taux de bonne classification
+mean(lda_pred == test$HeartDisease)
+
+
+
+# ==== EXPORTATION DU JEU DE DONNÉES NETTOYÉ ====
+write.csv(df, "heart_cleaned.csv", row.names = FALSE)
+
+# ==== CONCLUSION ====
+# L’étude révèle que l’âge, le cholestérol, la fréquence cardiaque maximale (MaxHR),
+# le type de douleur thoracique et le sexe sont des indicateurs significatifs de risque cardiaque.
+# Une analyse LDA permet une séparation modérée entre les groupes.
+# Des modèles de classification plus poussés (logistique, arbre, random forest) pourraient améliorer la précision.

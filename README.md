@@ -1,115 +1,110 @@
-#  Prédiction du Risque de Maladie Cardiaque
+# Heart Disease Risk Prediction
 
+## Project Description
 
+This project presents a comprehensive analysis for predicting heart disease risk using machine learning techniques. The study combines thorough exploratory analysis with the implementation and comparison of several classification algorithms.
 
-##  Description du Projet
+## Objectives
 
-Ce projet présente une analyse complète pour la prédiction du risque de maladie cardiaque en utilisant des techniques d'apprentissage automatique. L'étude combine une analyse exploratoire approfondie avec l'implémentation et la comparaison de plusieurs algorithmes de classification.
+- **Exploratory analysis**: Understand cardiovascular risk factors
+- **Data preparation**: Clean and preprocess the dataset
+- **Predictive modeling**: Develop and optimize classification models
+- **Comparative evaluation**: Compare the performance of different algorithms
+- **Interpretability**: Analyze variable importance with SHAP
 
-##  Objectifs
+## Dataset
 
-- **Analyse exploratoire** : Comprendre les facteurs de risque cardiovasculaire
-- **Préparation des données** : Nettoyer et préprocesser le dataset
-- **Modélisation prédictive** : Développer et optimiser des modèles de classification
-- **Évaluation comparative** : Comparer les performances des différents algorithmes
-- **Interprétabilité** : Analyser l'importance des variables avec SHAP
+The `heart.csv` dataset contains **918 observations** with the following variables:
 
-##  Dataset
+### Numerical Variables
+- **Age**: Patient's age (years)
+- **RestingBP**: Resting blood pressure (mm Hg)
+- **Cholesterol**: Serum cholesterol (mg/dl)
+- **MaxHR**: Maximum heart rate achieved
+- **Oldpeak**: Exercise-induced ST depression
 
-Le dataset `heart.csv` contient **918 observations** avec les variables suivantes :
+### Categorical Variables
+- **Sex**: Gender (M/F)
+- **ChestPainType**: Type of chest pain (ATA, NAP, ASY)
+- **RestingECG**: Resting ECG results (Normal, ST, LVH)
+- **ExerciseAngina**: Exercise-induced angina (Y/N)
+- **ST_Slope**: ST segment slope (Up, Flat, Down)
 
-### Variables Numériques
-- **Age** : Âge du patient (années)
-- **RestingBP** : Tension artérielle au repos (mm Hg)
-- **Cholesterol** : Cholestérol sérique (mg/dl)
-- **MaxHR** : Fréquence cardiaque maximale atteinte
-- **Oldpeak** : Dépression du segment ST induite par l'exercice
+### Target Variable
+- **HeartDisease**: Presence of heart disease (0 = No, 1 = Yes)
 
-### Variables Catégorielles
-- **Sex** : Sexe (M/F)
-- **ChestPainType** : Type de douleur thoracique (ATA, NAP, ASY)
-- **RestingECG** : Résultats ECG au repos (Normal, ST, LVH)
-- **ExerciseAngina** : Angine induite par l'exercice (Y/N)
-- **ST_Slope** : Pente du segment ST (Up, Flat, Down)
-
-### Variable Cible
-- **HeartDisease** : Présence de maladie cardiaque (0 = Non, 1 = Oui)
-
-##  Technologies Utilisées
+## Technologies Used
 
 ### R
-- **tidyverse** : Manipulation et visualisation des données
-- **corrplot** : Matrices de corrélation
-- **factoextra** : Analyse PCA
-- **MASS** : Analyse discriminante linéaire (LDA)
+- **tidyverse**: Data manipulation and visualization
+- **corrplot**: Correlation matrices
+- **factoextra**: PCA analysis
+- **MASS**: Linear discriminant analysis (LDA)
 
 ### Python
-- **pandas, numpy** : Manipulation des données
-- **scikit-learn** : Modèles de machine learning
-- **xgboost** : Gradient boosting
-- **shap** : Interprétabilité des modèles
-- **matplotlib, seaborn** : Visualisations
+- **pandas, numpy**: Data manipulation
+- **scikit-learn**: Machine learning models
+- **xgboost**: Gradient boosting
+- **shap**: Model interpretability
+- **matplotlib, seaborn**: Visualizations
 
+## Methodology
 
+### 1. **Exploratory Analysis (R)**
+- Distribution visualization
+- Correlation analysis
+- Statistical tests (Chi², ANOVA, Shapiro-Wilk)
+- Principal Component Analysis (PCA)
+- Linear Discriminant Analysis (LDA)
 
-##  Méthodologie
+### 2. **Data Preparation (Python)**
+- **Cleaning**: Treatment of outliers (BP=0, Cholesterol=0)
+- **Encoding**: 
+  - Binary for Sex and ExerciseAngina
+  - Ordinal for ChestPainType and ST_Slope
+  - One-hot for RestingECG
+- **Normalization**: StandardScaler for numerical variables
+- **Split**: 80% train / 20% test with stratification
 
-### 1. **Analyse Exploratoire (R)**
-- Visualisation des distributions
-- Analyse des corrélations
-- Tests statistiques (Chi², ANOVA, Shapiro-Wilk)
-- Analyse en Composantes Principales (PCA)
-- Analyse Discriminante Linéaire (LDA)
+### 3. **Modeling and Optimization**
 
-### 2. **Préparation des Données (Python)**
-- **Nettoyage** : Traitement des valeurs aberrantes (BP=0, Cholesterol=0)
-- **Encodage** : 
-  - Binaire pour Sex et ExerciseAngina
-  - Ordinal pour ChestPainType et ST_Slope
-  - One-hot pour RestingECG
-- **Normalisation** : StandardScaler pour les variables numériques
-- **Division** : 80% train / 20% test avec stratification
-
-### 3. **Modélisation et Optimisation**
-
-#### Algorithmes Implémentés
-1. **Régression Logistique**
-2. **Arbre de Décision**
+#### Implemented Algorithms
+1. **Logistic Regression**
+2. **Decision Tree**
 3. **Random Forest**
 4. **XGBoost**
 5. **K-Nearest Neighbors (KNN)**
 6. **Support Vector Machine (SVM)**
 
-#### Optimisation
-- **Validation croisée** à 5 plis
-- **GridSearchCV** pour l'optimisation des hyperparamètres
-- **Métriques d'évaluation** : Accuracy, Recall, F1-Score, AUC
+#### Optimization
+- **Cross-validation** with 5 folds
+- **GridSearchCV** for hyperparameter optimization
+- **Evaluation metrics**: Accuracy, Recall, F1-Score, AUC
 
-##  Résultats
+## Results
 
-### Performances des Modèles (Après Optimisation)
+### Model Performance (After Optimization)
 
-| Modèle | Accuracy | Recall | F1-Score | AUC |
+| Model | Accuracy | Recall | F1-Score | AUC |
 |--------|----------|--------|----------|-----|
 | **Random Forest** | **0.90** | **0.92** | **0.91** | **0.93** |
 | **XGBoost** | 0.87 | 0.89 | 0.89 | **0.93** |
 | **SVM** | 0.87 | 0.90 | 0.88 | **0.93** |
-| **Régression Logistique** | 0.88 | 0.91 | 0.89 | 0.91 |
-| **Arbre de Décision** | 0.81 | 0.82 | 0.83 | 0.87 |
+| **Logistic Regression** | 0.88 | 0.91 | 0.89 | 0.91 |
+| **Decision Tree** | 0.81 | 0.82 | 0.83 | 0.87 |
 | **KNN** | 0.80 | 0.80 | 0.82 | 0.84 |
 
-### Variables les Plus Importantes (Random Forest)
-1. **ST_Slope** - Pente du segment ST
-2. **ChestPainType** - Type de douleur thoracique
-3. **MaxHR** - Fréquence cardiaque maximale
-4. **ExerciseAngina** - Angine induite par l'exercice
-5. **Age** - Âge du patient
+### Most Important Variables (Random Forest)
+1. **ST_Slope** - ST segment slope
+2. **ChestPainType** - Type of chest pain
+3. **MaxHR** - Maximum heart rate
+4. **ExerciseAngina** - Exercise-induced angina
+5. **Age** - Patient's age
 
-##  Captures d'Écran
+## Screenshots
 
 <details>
-<summary> Cliquez pour voir les visualisations</summary>
-
+<summary>Click to view visualizations</summary>
 
 <p align="center">
   <img src="https://github.com/eyanaouel/HeartAttackRiskPrediction/blob/12826e3329367aa72aaca755ccf8118e3d6a765c/Screenshot%202025-09-28%20135325.png" alt="ROC Curves of All Models" width="600">
@@ -132,7 +127,7 @@ Le dataset `heart.csv` contient **918 observations** avec les variables suivante
 <p align="center">
   <img src="https://github.com/eyanaouel/HeartAttackRiskPrediction/blob/4a170f0ce408f0c409f859897715a9750f2a95c1/Screenshot%202025-09-28%20141301.png" alt="Waterfall of a Patient Not Belonging to the Target Class" width="800">
   <br>
-  <em>Waterfall of a Patient Not Belonging to the Target Classs</em>
+  <em>Waterfall of a Patient Not Belonging to the Target Class</em>
 </p>
 
 <p align="center">
@@ -155,29 +150,26 @@ Le dataset `heart.csv` contient **918 observations** avec les variables suivante
 
 </details>
 
+## Key Insights
 
-##  Insights Clés
+### Identified Risk Factors
+- **ST segment slope**: Most predictive variable
+- **Chest pain type**: ASY (Asymptomatic) = high risk
+- **Maximum heart rate**: Lower in sick patients
+- **Exercise-induced angina**: Strong correlation with disease
+- **Age**: Increasing risk with age
 
-### Facteurs de Risque Identifiés
-- **Pente du segment ST** : Variable la plus prédictive
-- **Type de douleur thoracique** : ASY (Asymptomatique) = risque élevé
-- **Fréquence cardiaque maximale** : Plus faible chez les patients malades
-- **Angine induite par l'exercice** : Forte corrélation avec la maladie
-- **Âge** : Risque croissant avec l'âge
+### Clinical Recommendations
+1. **Special attention** to patients with "Down" ST slope
+2. **Enhanced monitoring** of asymptomatic pain
+3. **Stress tests** to evaluate MaxHR and ExerciseAngina
+4. **Multi-factorial approach** necessary for diagnosis
 
-### Recommandations Cliniques
-1. **Attention particulière** aux patients avec pente ST "Down"
-2. **Surveillance renforcée** des douleurs asymptomatiques
-3. **Tests d'effort** pour évaluer MaxHR et ExerciseAngina
-4. **Approche multi-factorielle** nécessaire pour le diagnostic
+## Contributions
 
-##  Contributions
-
-Les contributions sont les bienvenues ! Merci de :
-1. Forker le projet
-2. Créer une branche feature (`git checkout -b feature/AmazingFeature`)
-3. Committer les changements (`git commit -m 'Add AmazingFeature'`)
-4. Pousser vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrir une Pull Request
-
-
+Contributions are welcome! Please:
+1. Fork the project
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request

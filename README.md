@@ -109,51 +109,44 @@ Le dataset `heart.csv` contient **918 observations** avec les variables suivante
 
 <details>
 <summary> Cliquez pour voir les visualisations</summary>
-![Uploading image.png…]()
 
-### 1. Distribution des Variables
+
 <p align="center">
   <img src="results/plots/distribution_age.png" alt="Distribution Age" width="600">
   <br>
   <em>Distribution de l'âge des patients</em>
 </p>
 
-### 2. Matrice de Corrélation
 <p align="center">
   <img src="results/plots/correlation_matrix.png" alt="Correlation Matrix" width="600">
   <br>
   <em>Matrice de corrélation des variables numériques</em>
 </p>
 
-### 3. Analyse PCA
 <p align="center">
   <img src="results/plots/pca_biplot.png" alt="PCA Biplot" width="600">
   <br>
   <em>Biplot PCA avec coloration selon la présence de maladie cardiaque</em>
 </p>
 
-### 4. Performances des Modèles
 <p align="center">
   <img src="results/plots/model_comparison.png" alt="Model Comparison" width="800">
   <br>
   <em>Comparaison avant/après optimisation des hyperparamètres</em>
 </p>
 
-### 5. Courbes ROC
 <p align="center">
   <img src="results/plots/roc_curves.png" alt="ROC Curves" width="600">
   <br>
   <em>Courbes ROC de tous les modèles</em>
 </p>
 
-### 6. Importance des Variables (SHAP)
 <p align="center">
   <img src="results/plots/shap_summary.png" alt="SHAP Summary" width="700">
   <br>
   <em>Analyse SHAP de l'importance des variables</em>
 </p>
 
-### 7. Matrice de Confusion - Random Forest
 <p align="center">
   <img src="results/plots/confusion_matrix_rf.png" alt="Confusion Matrix" width="500">
   <br>

@@ -112,9 +112,9 @@ Le dataset `heart.csv` contient **918 observations** avec les variables suivante
 
 
 <p align="center">
-  <img src="results/plots/distribution_age.png" alt="Distribution Age" width="600">
+  <img src="https://github.com/eyanaouel/HeartAttackRiskPrediction/blob/12826e3329367aa72aaca755ccf8118e3d6a765c/Screenshot%202025-09-28%20135325.png" alt="ROC Curves of All Models" width="600">
   <br>
-  <em>Distribution de l'âge des patients</em>
+  <em>ROC Curves of All Models</em>
 </p>
 
 <p align="center">

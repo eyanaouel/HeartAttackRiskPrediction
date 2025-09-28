@@ -128,7 +128,7 @@ The `heart.csv` dataset contains **918 observations** with the following variabl
   <br>
   <em>Waterfall of a Patient Not Belonging to the Target Class</em>
 </p>
-
+<br>
 <p align="center">
   <img src="https://github.com/eyanaouel/HeartAttackRiskPrediction/blob/4a170f0ce408f0c409f859897715a9750f2a95c1/Screenshot%202025-09-28%20141050.png" alt="Variable Importances via Odds Ratios (Logistic Regression)" width="600">
   <br>

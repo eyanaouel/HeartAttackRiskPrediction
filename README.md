@@ -109,6 +109,7 @@ Le dataset `heart.csv` contient **918 observations** avec les variables suivante
 
 <details>
 <summary> Cliquez pour voir les visualisations</summary>
+![Uploading image.png…]()
 
 ### 1. Distribution des Variables
 <p align="center">
@@ -162,7 +163,7 @@ Le dataset `heart.csv` contient **918 observations** avec les variables suivante
 </details>
 
 
-## 🔍 Insights Clés
+##  Insights Clés
 
 ### Facteurs de Risque Identifiés
 - **Pente du segment ST** : Variable la plus prédictive
@@ -177,7 +178,7 @@ Le dataset `heart.csv` contient **918 observations** avec les variables suivante
 3. **Tests d'effort** pour évaluer MaxHR et ExerciseAngina
 4. **Approche multi-factorielle** nécessaire pour le diagnostic
 
-## 🤝 Contributions
+##  Contributions
 
 Les contributions sont les bienvenues ! Merci de :
 1. Forker le projet
